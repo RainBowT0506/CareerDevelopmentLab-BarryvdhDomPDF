@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -17,6 +18,11 @@ class PdfController extends Controller
     public function downloadPdf(){
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML('<h1>Generate Simple pdf file</h1>');
+        return $pdf->download();
+    }
+
+    public function downloadViewPdf(){
+        $pdf = Pdf::loadView('index');
         return $pdf->download();
     }
 }
