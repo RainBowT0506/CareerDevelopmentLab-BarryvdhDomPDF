@@ -19,10 +19,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('generate-pdf',[PdfController::class,'generatePdf'])->name('generate-pdf');
+Route::get('generate-pdf', [PdfController::class, 'generatePdf'])->name('generate-pdf');
 
-Route::get('download-pdf',[PdfController::class,'downloadPdf'])->name('download-pdf');
+Route::get('download-pdf', [PdfController::class, 'downloadPdf'])->name('download-pdf');
 
-Route::get('download-view-pdf',[PdfController::class,'downloadViewPdf'])->name('download-view-pdf');
+Route::get('download-view-pdf', [PdfController::class, 'downloadViewPdf'])->name('download-view-pdf');
 
-Route::get('storage-pdf',[PdfController::class,'storagePdf'])->name('storage-pdf');
+Route::get('storage-pdf', [PdfController::class, 'storagePdf'])->name('storage-pdf');
+
+Route::get('show-pdf', [PdfController::class, 'showPdf'])->name('show-pdf');

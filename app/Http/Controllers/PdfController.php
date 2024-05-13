@@ -43,11 +43,28 @@ class PdfController extends Controller
         Log::info($file_path);
         //  存到 /storage/app/public/deliveryNote/
         Storage::disk('public')->put($file_path, $pdf->output());
-        
+
         $file_full_path = storage_path('app/public/' . $file_path);
         if (File::exists($file_full_path)) {
-            Log::info($pdf_filename. " is exist!");
+            Log::info($pdf_filename . " is exist!");
             return Storage::disk('public')->download($file_path);
         }
+    }
+
+    public function showPdf()
+    {
+        $filePath = 'public/deliveryNote/20240417/pick_up_note_1713352435.pdf';
+
+        if (!Storage::exists($filePath)) {
+            abort(404, 'PDF file not found');
+        }
+
+        $file = Storage::path($filePath);
+        $headers = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="pick_up_note_1713352435.pdf"',
+        ];
+
+        return response()->file($file, $headers);
     }
 }
