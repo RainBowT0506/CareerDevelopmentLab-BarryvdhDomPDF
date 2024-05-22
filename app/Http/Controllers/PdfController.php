@@ -32,6 +32,11 @@ class PdfController extends Controller
         return $pdf->download();
     }
 
+    public function donwloadImagePdf(){
+        $pdf = PDF::loadView('image');
+        return $pdf->download('image.pdf');
+    }
+
     public function storagePdf()
     {
         $pdf = App::make('dompdf.wrapper');
